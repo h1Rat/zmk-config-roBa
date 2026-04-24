@@ -63,6 +63,36 @@
             bindings = <&to 0 &macro_param_1to1 &kp MACRO_PLACEHOLDER>;
             label = "TO_LAYER_0";
         };
+
+        quote_pair: quote_pair {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings =
+                <&kp RIGHT_BRACKET>,
+                <&kp BACKSLASH>,
+                <&kp LEFT_ARROW>;
+            label = "QUOTE_PAIR";
+        };
+
+        brace_pair: brace_pair {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings =
+                <&kp LEFT_BRACE>,
+                <&kp RIGHT_BRACE>,
+                <&kp LEFT_ARROW>;
+            label = "BRACE_PAIR";
+        };
+
+        paren_pair: paren_pair {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings =
+                <&kp LEFT_PARENTHESIS>,
+                <&kp RIGHT_PARENTHESIS>,
+                <&kp LEFT_ARROW>;
+            label = "PAREN_PAIR";
+        };
     };
 
     behaviors {
@@ -161,6 +191,13 @@
             compatible = "zmk,behavior-mod-morph";
             #binding-cells = <0>;
             bindings = <&kp LS(LEFT_BRACKET)>, <&kp LS(EQUAL)>;
+            mods = <(MOD_LSFT|MOD_RSFT)>;
+        };
+
+        quote_or_brace_pair: quote_or_brace_pair {
+            compatible = "zmk,behavior-mod-morph";
+            #binding-cells = <0>;
+            bindings = <&quote_pair>, <&brace_pair>;
             mods = <(MOD_LSFT|MOD_RSFT)>;
         };
 
